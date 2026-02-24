@@ -17,9 +17,13 @@ const PRECIO_BASE = 0.50;
 // - Al menos 2 adultos entre 18-64 años (sin descuento)
 
 const clientes = [
-    { nombre: "Pablo Pérez", edad: 15, tickets: 2 },     // Menor
-    { nombre: "María López", edad: 70, tickets: 1 },     // Mayor
+    { nombre: "Pablo Pérez", edad: 15, tickets: 3 },     // Menor
+    { nombre: "María López", edad: 70, tickets: 2 },     // Mayor
     // TODO: Agrega 4 clientes más siguiendo esta estructura
+    { nombre: "Wen Cristina", edad: 20, tickets: 15},    //Mayor
+    { nombre: "Johan Vivanco", edad: 33, tickets: 11},  // Mayor
+    { nombre: "Octavio Rivero", edad: 80, tickets: 14}, //Mayor
+    { nombre: "Andres Messi", edad: 16, tickets: 16}, //Menor
     // Asegúrate de incluir: 1 menor más, 1 mayor más, y 2 adultos (18-64 años)
 ];
 
@@ -41,19 +45,26 @@ for (let i = 0; i < clientes.length; i++) {
     let edad = cliente.edad;
     let cantidadTickets = cliente.tickets;
     
-    // TODO: Paso 2 - Calcula el precio sin descuento
+    //  Paso 2 - Calcula el precio sin descuento
     // Multiplica PRECIO_BASE por cantidadTickets
-    let precioSinDescuento = 0; // Reemplaza 0 con el cálculo correcto
+    let precioSinDescuento = PRECIO_BASE * cantidadTickets; // Reemplaza 0 con el cálculo correcto
     
-    // TODO: Paso 3 - Calcula el descuento según la edad
+    // : Paso 3 - Calcula el descuento según la edad
     let descuento = 0;
     // Si edad < 18, descuento = 0.50 (50%)
+    if (edad < 18) {
+        descuento = 0.50;
+    }
     // Si edad >= 65, descuento = 0.30 (30%)
+    else if (edad >= 65) {
+        descuento = 0.30;
+    }
     // Si no, descuento = 0 (sin descuento)
     
-    // TODO: Paso 4 - Calcula el precio con descuento
+    // Paso 4 - Calcula el precio con descuento
     // Resta al precioSinDescuento el monto del descuento
-    let precioConDescuento = 0; // Reemplaza 0 con el cálculo correcto
+    
+    let precioConDescuento = precioSinDescuento - (precioSinDescuento * descuento); // Reemplaza 0 con el cálculo correcto
     
     // TODO: Paso 5 - Muestra el reporte del cliente
     console.log("Cliente: " + nombre);
